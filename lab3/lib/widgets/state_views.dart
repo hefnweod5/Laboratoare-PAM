@@ -1,0 +1,140 @@
+import 'package:flutter/material.dart';
+
+import '../core/app_colors.dart';
+
+/// Starea de Loading.
+class LoadingView extends StatelessWidget {
+  final String message;
+
+  const LoadingView({super.key, this.message = 'Se încarcă datele...'});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const SizedBox(
+            width: 28,
+            height: 28,
+            child: CircularProgressIndicator(strokeWidth: 2.5),
+          ),
+          const SizedBox(height: 14),
+          Text(
+            message,
+            style: const TextStyle(color: kGrey, fontSize: 13),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Starea de Error.
+class ErrorView extends StatelessWidget {
+  final String message;
+  final VoidCallback onRetry;
+
+  const ErrorView({
+    super.key,
+    required this.message,
+    required this.onRetry,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(28),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 64,
+              height: 64,
+              decoration: const BoxDecoration(
+                color: Color(0xFFFFECEC),
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(Icons.wifi_off_rounded, color: kRed, size: 30),
+            ),
+            const SizedBox(height: 16),
+            const Text(
+              'Ceva nu a funcționat',
+              style: TextStyle(
+                fontSize: 17,
+                fontWeight: FontWeight.w700,
+                color: kInk,
+              ),
+            ),
+            const SizedBox(height: 6),
+            Text(
+              message,
+              textAlign: TextAlign.center,
+              style: const TextStyle(color: kGrey, fontSize: 13, height: 1.4),
+            ),
+            const SizedBox(height: 18),
+            FilledButton.icon(
+              onPressed: onRetry,
+              icon: const Icon(Icons.refresh_rounded, size: 18),
+              label: const Text('Reîncearcă'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Starea de Empty.
+class EmptyView extends StatelessWidget {
+  final String title;
+  final String message;
+  final String actionLabel;
+  final VoidCallback onAction;
+
+  const EmptyView({
+    super.key,
+    this.title = 'Niciun rezultat',
+    this.message = 'Încearcă altă căutare sau alt filtru.',
+    this.actionLabel = 'Resetează filtrele',
+    required this.onAction,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 36, horizontal: 24),
+      child: Column(
+        children: [
+          Container(
+            width: 64,
+            height: 64,
+            decoration: const BoxDecoration(
+              color: kFieldFill,
+              shape: BoxShape.circle,
+            ),
+            child: const Icon(Icons.search_off_rounded, color: kGrey, size: 30),
+          ),
+          const SizedBox(height: 14),
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+              color: kInk,
+            ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            message,
+            textAlign: TextAlign.center,
+            style: const TextStyle(color: kGrey, fontSize: 13),
+          ),
+          const SizedBox(height: 14),
+          TextButton(onPressed: onAction, child: Text(actionLabel)),
+        ],
+      ),
+    );
+  }
+}
