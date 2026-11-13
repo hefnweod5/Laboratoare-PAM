@@ -7,6 +7,7 @@ A collection of Flutter applications.
 | [`lab1/`](lab1) | Discount calculator |
 | [`lab2/`](lab2) | Learning app |
 | [`lab3/`](lab3) | Course learning app with BLoC and JSON data |
+| [`lab4/`](lab4) | Learning articles feed with REST API and Clean Architecture |
 
 ## Requirements
 
@@ -16,7 +17,7 @@ A collection of Flutter applications.
 ## Running a project
 
 ```bash
-cd lab1        # or lab2 / lab3
+cd lab1        # or lab2 / lab3 / lab4
 flutter pub get
 flutter run
 ```
