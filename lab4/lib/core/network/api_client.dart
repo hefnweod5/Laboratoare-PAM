@@ -7,9 +7,10 @@ import 'package:http/http.dart' as http;
 import '../constants/api_constants.dart';
 import '../error/failures.dart';
 
-/// Client HTTP subțire, folosit exclusiv de data sources.
+/// Client HTTP subțire, folosit de data sources.
 ///
-/// Face cererea, decodează JSON-ul și traduce excepțiile tehnice în `Failure`.
+/// Rolul lui este să facă cererea, să decodeze JSON-ul și să traducă
+/// excepțiile tehnice în `Failure`.
 class ApiClient {
   ApiClient({http.Client? client}) : _client = client ?? http.Client();
 

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../theme/app_theme.dart';
 
-/// Starea de încărcare, refolosită în feed și în detalii.
+/// Starea de încărcare, reutilizabilă.
 class LoadingView extends StatelessWidget {
-  const LoadingView({super.key, this.message = 'Se încarcă articolele...'});
+  const LoadingView({super.key, this.message = 'Se încarcă datele...'});
 
   final String message;
 
@@ -15,12 +15,12 @@ class LoadingView extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           const SizedBox(
-            width: 30,
-            height: 30,
+            width: 28,
+            height: 28,
             child: CircularProgressIndicator(strokeWidth: 2.5),
           ),
           const SizedBox(height: 14),
-          Text(message, style: const TextStyle(color: kMuted, fontSize: 13)),
+          Text(message, style: const TextStyle(color: kGrey, fontSize: 13)),
         ],
       ),
     );
@@ -50,21 +50,16 @@ class ErrorView extends StatelessWidget {
               width: 64,
               height: 64,
               decoration: const BoxDecoration(
-                color: kLavender,
+                color: Color(0xFFFFECEC),
                 shape: BoxShape.circle,
               ),
-              child: const Icon(
-                Icons.cloud_off_rounded,
-                color: kIndigo,
-                size: 30,
-              ),
+              child: const Icon(Icons.wifi_off_rounded, color: kRed, size: 30),
             ),
             const SizedBox(height: 16),
             const Text(
-              'Nu am putut încărca articolele',
-              textAlign: TextAlign.center,
+              'Ceva nu a funcționat',
               style: TextStyle(
-                fontSize: 16.5,
+                fontSize: 17,
                 fontWeight: FontWeight.w700,
                 color: kInk,
               ),
@@ -73,7 +68,7 @@ class ErrorView extends StatelessWidget {
             Text(
               message,
               textAlign: TextAlign.center,
-              style: const TextStyle(color: kMuted, fontSize: 13, height: 1.4),
+              style: const TextStyle(color: kGrey, fontSize: 13, height: 1.4),
             ),
             const SizedBox(height: 18),
             FilledButton.icon(
@@ -92,59 +87,52 @@ class ErrorView extends StatelessWidget {
 class EmptyView extends StatelessWidget {
   const EmptyView({
     super.key,
-    this.title = 'Niciun articol',
-    this.message = 'Încearcă alt termen de căutare.',
-    this.actionLabel = 'Resetează',
-    this.onAction,
+    this.title = 'Niciun rezultat',
+    this.message = 'Încearcă altă căutare sau alt filtru.',
+    this.actionLabel = 'Resetează filtrele',
+    required this.onAction,
+    this.icon = Icons.search_off_rounded,
   });
 
   final String title;
   final String message;
   final String actionLabel;
-  final VoidCallback? onAction;
+  final VoidCallback onAction;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 36, horizontal: 24),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              width: 64,
-              height: 64,
-              decoration: const BoxDecoration(
-                color: kLavender,
-                shape: BoxShape.circle,
-              ),
-              child: const Icon(
-                Icons.article_outlined,
-                color: kIndigo,
-                size: 30,
-              ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 36, horizontal: 24),
+      child: Column(
+        children: [
+          Container(
+            width: 64,
+            height: 64,
+            decoration: const BoxDecoration(
+              color: kFieldFill,
+              shape: BoxShape.circle,
             ),
-            const SizedBox(height: 14),
-            Text(
-              title,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w700,
-                color: kInk,
-              ),
+            child: Icon(icon, color: kGrey, size: 30),
+          ),
+          const SizedBox(height: 14),
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+              color: kInk,
             ),
-            const SizedBox(height: 4),
-            Text(
-              message,
-              textAlign: TextAlign.center,
-              style: const TextStyle(color: kMuted, fontSize: 13),
-            ),
-            if (onAction != null) ...[
-              const SizedBox(height: 12),
-              TextButton(onPressed: onAction, child: Text(actionLabel)),
-            ],
-          ],
-        ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            message,
+            textAlign: TextAlign.center,
+            style: const TextStyle(color: kGrey, fontSize: 13),
+          ),
+          const SizedBox(height: 14),
+          TextButton(onPressed: onAction, child: Text(actionLabel)),
+        ],
       ),
     );
   }

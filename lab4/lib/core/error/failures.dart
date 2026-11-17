@@ -1,7 +1,8 @@
 /// Erorile de business ale aplicației.
 ///
-/// Stratul `data` prinde excepțiile tehnice și le transformă în `Failure`,
-/// astfel încât stratul `presentation` să nu depindă de HTTP sau JSON.
+/// Stratul `data` prinde excepțiile tehnice (socket, timeout, JSON invalid)
+/// și le transformă în `Failure`, astfel încât stratul `presentation` să nu
+/// depindă de detalii de implementare.
 sealed class Failure implements Exception {
   final String message;
 

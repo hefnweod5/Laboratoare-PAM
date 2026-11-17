@@ -2,38 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'core/theme/app_theme.dart';
-import 'features/feed/domain/repositories/article_repository.dart';
-import 'features/feed/domain/usecases/get_article_detail.dart';
-import 'features/feed/domain/usecases/get_articles.dart';
-import 'features/feed/domain/usecases/search_articles.dart';
-import 'features/feed/presentation/cubit/feed_cubit.dart';
-import 'features/feed/presentation/pages/feed_page.dart';
+import 'features/learning/domain/repositories/learning_repository.dart';
+import 'features/learning/domain/usecases/get_course_details.dart';
+import 'features/learning/domain/usecases/get_learning_feed.dart';
+import 'features/learning/presentation/cubit/home_cubit.dart';
+import 'features/learning/presentation/pages/home_page.dart';
 
-/// Rădăcina aplicației.
+/// Rădăcina aplicației — designul din Laboratorul 3, datele din REST API.
 ///
 /// Injectarea dependențelor se face aici: repository-ul vine din `main`, iar
 /// cazurile de utilizare sunt construite o singură dată și oferite cubitului.
-class App extends StatelessWidget {
-  const App({super.key, required this.repository});
+class LearningApp extends StatelessWidget {
+  const LearningApp({super.key, required this.repository});
 
-  final ArticleRepository repository;
+  final LearningRepository repository;
 
   @override
   Widget build(BuildContext context) {
-    final getArticles = GetArticles(repository);
-    final searchArticles = SearchArticles(repository);
-    final getArticleDetail = GetArticleDetail(repository);
+    final getLearningFeed = GetLearningFeed(repository);
+    final getCourseDetails = GetCourseDetails(repository);
 
     return BlocProvider(
-      create: (_) => FeedCubit(
-        getArticles: getArticles,
-        searchArticles: searchArticles,
+      create: (_) => HomeCubit(
+        getLearningFeed: getLearningFeed,
+        getCourseDetails: getCourseDetails,
       )..load(),
       child: MaterialApp(
-        title: 'Readly',
+        title: 'Learning App — Lab 4',
         debugShowCheckedModeBanner: false,
         theme: buildAppTheme(),
-        home: FeedPage(getArticleDetail: getArticleDetail),
+        home: const HomePage(),
       ),
     );
   }
