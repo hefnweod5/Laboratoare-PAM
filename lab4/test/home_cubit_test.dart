@@ -1,15 +1,15 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lab4_lucian_varianta4/core/error/failures.dart';
-import 'package:lab4_lucian_varianta4/features/learning/data/models/course_details_model.dart';
-import 'package:lab4_lucian_varianta4/features/learning/data/models/learning_feed_model.dart';
-import 'package:lab4_lucian_varianta4/features/learning/domain/entities/course_details.dart';
-import 'package:lab4_lucian_varianta4/features/learning/domain/entities/learning_feed.dart';
-import 'package:lab4_lucian_varianta4/features/learning/domain/repositories/learning_repository.dart';
-import 'package:lab4_lucian_varianta4/features/learning/domain/usecases/get_course_details.dart';
-import 'package:lab4_lucian_varianta4/features/learning/domain/usecases/get_learning_feed.dart';
-import 'package:lab4_lucian_varianta4/features/learning/presentation/cubit/home_cubit.dart';
-import 'package:lab4_lucian_varianta4/features/learning/presentation/cubit/home_state.dart';
-import 'package:lab4_lucian_varianta4/features/learning/presentation/models/filters.dart';
+import 'package:lab4_lucian_varianta4/data/models/course_details_model.dart';
+import 'package:lab4_lucian_varianta4/data/models/learning_feed_model.dart';
+import 'package:lab4_lucian_varianta4/domain/entities/course_details.dart';
+import 'package:lab4_lucian_varianta4/domain/entities/learning_feed.dart';
+import 'package:lab4_lucian_varianta4/domain/repositories/learning_repository.dart';
+import 'package:lab4_lucian_varianta4/domain/usecases/get_course_details.dart';
+import 'package:lab4_lucian_varianta4/domain/usecases/get_learning_feed.dart';
+import 'package:lab4_lucian_varianta4/presentation/cubit/home_cubit.dart';
+import 'package:lab4_lucian_varianta4/presentation/cubit/home_state.dart';
+import 'package:lab4_lucian_varianta4/presentation/models/filters.dart';
 
 import 'helpers/fixtures.dart';
 

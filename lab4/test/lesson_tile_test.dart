@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lab4_lucian_varianta4/features/learning/domain/entities/course_details.dart';
-import 'package:lab4_lucian_varianta4/features/learning/presentation/widgets/lesson_tile.dart';
+import 'package:lab4_lucian_varianta4/domain/entities/course_details.dart';
+import 'package:lab4_lucian_varianta4/presentation/widgets/lesson_tile.dart';
 
 Lesson _lesson({
   String title = 'Introduction to React',

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lab4_lucian_varianta4/core/theme/app_theme.dart';
-import 'package:lab4_lucian_varianta4/features/learning/data/models/course_details_model.dart';
-import 'package:lab4_lucian_varianta4/features/learning/presentation/cubit/overview_cubit.dart';
-import 'package:lab4_lucian_varianta4/features/learning/presentation/pages/course_overview_page.dart';
+import 'package:lab4_lucian_varianta4/data/models/course_details_model.dart';
+import 'package:lab4_lucian_varianta4/presentation/cubit/overview_cubit.dart';
+import 'package:lab4_lucian_varianta4/presentation/pages/course_overview_page.dart';
 
 import 'helpers/fixtures.dart';
 

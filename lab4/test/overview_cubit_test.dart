@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lab4_lucian_varianta4/features/learning/data/models/course_details_model.dart';
-import 'package:lab4_lucian_varianta4/features/learning/presentation/cubit/overview_cubit.dart';
-import 'package:lab4_lucian_varianta4/features/learning/presentation/models/filters.dart';
+import 'package:lab4_lucian_varianta4/data/models/course_details_model.dart';
+import 'package:lab4_lucian_varianta4/presentation/cubit/overview_cubit.dart';
+import 'package:lab4_lucian_varianta4/presentation/models/filters.dart';
 
 import 'helpers/fixtures.dart';
 
